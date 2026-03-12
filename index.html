@@ -1,28 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <title>Janhavi Chaurasia</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 <style>
+
 body{
-font-family: Arial, Helvetica, sans-serif;
-max-width: 850px;
-margin:auto;
-padding:40px;
-line-height:1.6;
+font-family:'Inter', sans-serif;
+background:#fafafa;
 color:#222;
+max-width:900px;
+margin:auto;
+padding:60px 20px;
+line-height:1.7;
 }
 
 h1{
-font-size:32px;
-margin-bottom:0px;
+font-size:36px;
+margin-bottom:5px;
+}
+
+.subtitle{
+color:#555;
+margin-bottom:20px;
+}
+
+.links a{
+margin-right:15px;
+color:#0066cc;
+text-decoration:none;
+font-weight:500;
+}
+
+.links a:hover{
+text-decoration:underline;
+}
+
+section{
+margin-top:60px;
 }
 
 h2{
-margin-top:40px;
-border-bottom:1px solid #ddd;
-padding-bottom:5px;
+font-size:22px;
+border-bottom:2px solid #eee;
+padding-bottom:8px;
+margin-bottom:20px;
+}
+
+.paper{
+background:white;
+padding:18px;
+border-radius:10px;
+margin-bottom:15px;
+box-shadow:0 2px 8px rgba(0,0,0,0.05);
+}
+
+.project{
+background:white;
+padding:18px;
+border-radius:10px;
+margin-bottom:15px;
+box-shadow:0 2px 8px rgba(0,0,0,0.05);
 }
 
 a{
@@ -34,101 +76,115 @@ a:hover{
 text-decoration:underline;
 }
 
-.links a{
-margin-right:15px;
-}
 </style>
-
 </head>
 
 <body>
 
 <h1>Janhavi Chaurasia</h1>
 
-<p>
-Robotics & Learning Systems<br>
+<div class="subtitle">
+Robotics & Learning Systems  
+<br>
 Incoming MSE Robotics – University of Pennsylvania
-</p>
+</div>
 
-<p class="links">
+<div class="links">
 <a href="mailto:janhavic.2604@gmail.com">Email</a>
 <a href="https://github.com/Janhavi-118">GitHub</a>
 <a href="https://scholar.google.com/citations?user=LmbheEcAAAAJ&hl=en&oi=ao">Google Scholar</a>
 <a href="https://orcid.org/0009-0001-5836-3475">ORCID</a>
-<a href="JanhaviC_Resume.pdf">CV</a>
-</p>
+</div>
+
+<section>
 
 <h2>Research</h2>
 
 <p>
-My research explores how mechanisms inspired by human brain learning can inform adaptive robotic systems. 
-I am interested in reinforcement learning, neuromorphic perception, and multi-agent robotics, with a focus on 
-understanding how structured learning dynamics enable stability and continual adaptation in embodied systems. 
+My research explores how mechanisms inspired by human brain learning can inform adaptive robotic systems.
+I am particularly interested in reinforcement learning, neuromorphic perception, and multi-agent robotics,
+with a focus on how structured learning dynamics enable stability and continual adaptation in embodied systems.
 </p>
 
 <p>
-Through projects spanning neuromodulated reinforcement learning, geometric perception, and decentralized swarm control, 
-I study how learning mechanisms can enable robots to coordinate, adapt to uncertainty, and retain useful behavior while 
-acquiring new skills.
+Across my work in neuromodulated reinforcement learning, geometric perception, and decentralized swarm control,
+I study how learning mechanisms allow robots to coordinate under uncertainty while retaining useful behaviors
+over long horizons.
 </p>
+
+</section>
+
+<section>
 
 <h2>Publications</h2>
 
-<p>
+<div class="paper">
 <b>Dopamine in the Mitigation of Catastrophic Forgetting in Reinforcement Learning</b><br>
-Machine Learning and Intelligent Systems Engineering (MLISE 2025)<br>
+MLISE 2025<br>
 <a href="https://ieeexplore.ieee.org/abstract/document/11100173">Paper</a> |
 <a href="https://github.com/Janhavi-118/DopamineReinforcementLearning">Code</a>
-</p>
+</div>
 
-<p>
-<b>SwarmFormer: Transformer-Based Multi-Robot Formation Control with Risk-Aware Fusion</b><br>
-International Conference on Robotics, Control and Automation Engineering (RCAE 2025)<br>
+<div class="paper">
+<b>SwarmFormer: Transformer-Based Multi-Robot Formation Control</b><br>
+RCAE 2025<br>
 <a href="https://github.com/Janhavi-118/SwarmFormer">Code</a>
-</p>
+</div>
 
-<p>
+<div class="paper">
 <b>SGSPose: Neuromorphic-Geometric 6D Pose Estimation</b><br>
 IEEE Access<br>
 <a href="https://ieeexplore.ieee.org/document/11338761">Paper</a>
-</p>
+</div>
 
-<p>
+<div class="paper">
 <b>Autonomous Exploration of Unknown Indoor Environments Using Multi-UAV Systems</b><br>
-International Conference on Computer, Control and Robotics (ICCCR 2025)<br>
+ICCCR 2025<br>
 <a href="https://ieeexplore.ieee.org/abstract/document/11072559">Paper</a>
-</p>
+</div>
+
+</section>
+
+<section>
 
 <h2>Selected Projects</h2>
 
-<p>
-<b>Quadruped Gait Imitation Learning with Sensorimotor Feedback</b><br>
-Biologically inspired locomotion using central pattern generators, behavioral cloning, and predictive modeling.<br>
+<div class="project">
+<b>Quadruped Gait Imitation Learning</b><br>
+Central Pattern Generator based locomotion with sensorimotor feedback.<br>
 <a href="https://github.com/Janhavi-118/NeuroQuadruped">GitHub</a>
-</p>
+</div>
 
-<p>
+<div class="project">
 <b>Multi-Agent Reinforcement Learning for Swarm Pursuit</b><br>
-Pac-Man-inspired multi-agent pursuit-evasion environment studying cooperative reinforcement learning.<br>
+Pac-Man inspired MARL system studying decentralized coordination.<br>
 <a href="https://github.com/Janhavi-118/PacMan_MARL">GitHub</a>
-</p>
+</div>
 
-<p>
-<b>Multi-UAV Exploration and Mapping</b><br>
-ROS2-based drone swarm system for autonomous exploration in GPS-denied environments.
-</p>
+<div class="project">
+<b>Multi-UAV Exploration System</b><br>
+ROS2 + PX4 drone swarm for autonomous indoor mapping.
+</div>
+
+</section>
+
+<section>
 
 <h2>Experience</h2>
 
 <p>
-<b>Robotics Intern – Accio Robotics</b><br>
-Developed perception pipelines for robotic bin-picking systems using YOLOv8 and RGB-D sensing.
+<b>Robotics Intern — Accio Robotics</b><br>
+Built perception pipelines for robotic bin-picking systems using YOLOv8 and RGB-D sensing.
 </p>
 
 <p>
-<b>Robotics Intern – Clearspot.ai</b><br>
-Built UAV simulation environments using PX4 and ROS2 for perception-driven navigation.
+<b>Robotics Intern — Clearspot.ai</b><br>
+Developed UAV simulation environments using PX4 and ROS2 for perception-driven navigation.
 </p>
+
+</section>
+
+<section>
 
 <h2>Contact</h2>
 
@@ -137,6 +193,8 @@ Email: <a href="mailto:janhavic.2604@gmail.com">janhavic.2604@gmail.com</a><br>
 GitHub: <a href="https://github.com/Janhavi-118">github.com/Janhavi-118</a><br>
 Google Scholar: <a href="https://scholar.google.com/citations?user=LmbheEcAAAAJ&hl=en&oi=ao">Profile</a>
 </p>
+
+</section>
 
 </body>
 </html>
