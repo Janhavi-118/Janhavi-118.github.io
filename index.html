@@ -10,250 +10,519 @@
 <style>
 
 :root{
---accent:#6f90b8;
---accent-light:#9fb7d8;
---text:#e8ecf1;          /* off-white text */
---bg:#0f1722;            /* deep navy background */
---card:#1a2433;          /* card background */
+  --accent:#6f90b8;
+  --accent-light:#9fb7d8;
+  --text:#e8ecf1;
+  --bg:#0f1722;
+  --card:#1a2433;
+  --card-hover:#1f2d40;
+  --border:#2a3545;
 }
 
 body{
-font-family:'Inter',sans-serif;
-margin:0;
-background:var(--bg);
-color:var(--text);
+  font-family:'Inter',sans-serif;
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
 }
 
 .container{
-max-width:1100px;
-margin:auto;
-display:flex;
-gap:60px;
-padding:60px 30px;
+  max-width:1100px;
+  margin:auto;
+  display:flex;
+  gap:60px;
+  padding:60px 30px;
 }
 
 .sidebar{
-width:260px;
+  width:260px;
+  flex-shrink:0;
 }
 
 .name{
-color:#6f90b8;
-font-family:'Merriweather',serif;
-font-size:34px;
-font-weight:700;
-margin-bottom:10px;
-border-bottom:3px solid #5f7fa6;
-display:inline-block;
-padding-bottom:6px;
+  color:#6f90b8;
+  font-family:'Merriweather',serif;
+  font-size:34px;
+  font-weight:700;
+  margin-bottom:10px;
+  border-bottom:3px solid #5f7fa6;
+  display:inline-block;
+  padding-bottom:6px;
 }
 
 .subtitle{
-color:#555;
-font-size:15px;
-font-style:italic;
-margin-bottom:20px;
+  color:#7a8fa8;
+  font-size:14px;
+  font-style:italic;
+  margin-bottom:20px;
+  line-height:1.6;
 }
 
 .links a{
-display:block;
-margin-bottom:8px;
-color:var(--accent);
-text-decoration:none;
-font-weight:500;
+  display:block;
+  margin-bottom:8px;
+  color:var(--accent);
+  text-decoration:none;
+  font-weight:500;
 }
 
-.links a:hover{
-text-decoration:underline;
-}
+.links a:hover{ text-decoration:underline; }
 
-.content{
-flex:1;
-}
+.content{ flex:1; min-width:0; }
 
-section{
-margin-bottom:55px;
-}
+section{ margin-bottom:55px; }
 
 h2{
-font-family:'Merriweather',serif;
-font-size:24px;
-color:var(--accent);
-border-bottom:3px solid var(--accent-light);
-padding-bottom:8px;
-margin-bottom:22px;
+  font-family:'Merriweather',serif;
+  font-size:24px;
+  color:var(--accent);
+  border-bottom:3px solid var(--accent-light);
+  padding-bottom:8px;
+  margin-bottom:22px;
 }
 
+/* ── Paper cards ───────────────────────────────────────────── */
+.paper-card{
+  background:var(--card);
+  border-radius:12px;
+  box-shadow:0 6px 14px rgba(0,0,0,0.2);
+  margin-bottom:16px;
+  overflow:hidden;
+  border:1px solid var(--border);
+  transition:border-color 0.2s;
+}
+
+.paper-card:hover{ border-color:var(--accent); }
+
+.paper-header{
+  padding:20px 22px;
+  cursor:pointer;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:16px;
+}
+
+.paper-title-block{ flex:1; }
+
+.paper-title{
+  font-weight:600;
+  font-size:15px;
+  color:var(--text);
+  line-height:1.5;
+  margin-bottom:6px;
+}
+
+.paper-venue{
+  font-size:12px;
+  color:var(--accent-light);
+  font-style:italic;
+}
+
+.paper-links{
+  display:flex;
+  gap:10px;
+  flex-shrink:0;
+  margin-top:2px;
+}
+
+.paper-links a{
+  font-size:12px;
+  color:var(--accent);
+  text-decoration:none;
+  border:1px solid var(--accent);
+  padding:3px 9px;
+  border-radius:4px;
+  white-space:nowrap;
+  transition:background 0.15s, color 0.15s;
+}
+
+.paper-links a:hover{
+  background:var(--accent);
+  color:#fff;
+  text-decoration:none;
+}
+
+.expand-btn{
+  background:none;
+  border:none;
+  color:var(--accent-light);
+  font-size:18px;
+  cursor:pointer;
+  flex-shrink:0;
+  padding:0;
+  line-height:1;
+  transition:transform 0.25s;
+  margin-top:2px;
+}
+
+.paper-card.open .expand-btn{ transform:rotate(180deg); }
+
+.paper-body{
+  display:none;
+  padding:0 22px 20px 22px;
+  border-top:1px solid var(--border);
+}
+
+.paper-card.open .paper-body{ display:block; }
+
+.paper-abstract{
+  font-size:13px;
+  color:#9aaec4;
+  line-height:1.75;
+  margin-top:14px;
+  margin-bottom:12px;
+}
+
+.paper-contributions{
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+
+.paper-contributions li{
+  font-size:13px;
+  color:#b0c4d8;
+  padding:4px 0 4px 16px;
+  position:relative;
+  line-height:1.6;
+}
+
+.paper-contributions li::before{
+  content:"→";
+  position:absolute;
+  left:0;
+  color:var(--accent);
+}
+
+/* ── Project cards ─────────────────────────────────────────── */
 .card{
-background:var(--card);
-padding:22px;
-border-radius:12px;
-box-shadow:0 6px 14px rgba(0,0,0,0.2);
-margin-bottom:16px;
+  background:var(--card);
+  padding:20px 22px;
+  border-radius:12px;
+  box-shadow:0 6px 14px rgba(0,0,0,0.2);
+  margin-bottom:16px;
+  border:1px solid var(--border);
+  font-size:14px;
+  line-height:1.7;
+  color:#9aaec4;
 }
 
+.card b{ color:var(--text); }
+
+/* ── Nav ───────────────────────────────────────────────────── */
 .nav{
-background:#111a27;
-padding:16px 30px;
-border-bottom:1px solid #2a3545;
-font-size:14px;
+  background:#111a27;
+  padding:16px 30px;
+  border-bottom:1px solid #2a3545;
+  font-size:14px;
 }
 
 .nav a{
-margin-right:22px;
-color:var(--text);
-text-decoration:none;
-font-weight:500;
+  margin-right:22px;
+  color:var(--text);
+  text-decoration:none;
+  font-weight:500;
 }
 
-.nav a:hover{
-color:var(--accent);
-}
+.nav a:hover{ color:var(--accent); }
 
-a{
-color:var(--accent);
-text-decoration:none;
-}
-
-a:hover{
-text-decoration:underline;
-}
+a{ color:var(--accent); text-decoration:none; }
+a:hover{ text-decoration:underline; }
 
 </style>
-
 </head>
 
 <body>
 
 <div class="nav">
-<a href="#research">Research</a>
-<a href="#publications">Publications</a>
-<a href="#projects">Projects</a>
-<a href="#experience">Experience</a>
+  <a href="#research">Research</a>
+  <a href="#publications">Publications</a>
+  <a href="#projects">Projects</a>
+  <a href="#experience">Experience</a>
 </div>
 
 <div class="container">
 
-<div class="sidebar">
-<img src="assets/profile.jpg" alt="Janhavi Chaurasia" 
-style="width:180px; border-radius:12px; margin-bottom:20px;">
-<div class="name">Janhavi Chaurasia</div>
+  <!-- ── Sidebar ── -->
+  <div class="sidebar">
+    <img src="assets/profile.jpg" alt="Janhavi Chaurasia"
+         style="width:180px;border-radius:12px;margin-bottom:20px;">
+    <div class="name">Janhavi Chaurasia</div>
+    <div class="subtitle">
+      Robotics &bull; Spatial Intelligence &bull; Embodied Learning
+    </div>
+    <p style="font-size:13px;color:#7a8fa8;">
+      janhavic [dot] 2604 [at] gmail [dot] com
+    </p>
+    <div class="links">
+      <a href="https://github.com/Janhavi-118">GitHub</a>
+      <a href="https://scholar.google.com/citations?user=LmbheEcAAAAJ">Google Scholar</a>
+      <a href="assets/JanhaviC_CV.pdf" target="_blank">CV</a>
+    </div>
+  </div>
 
-<div class="subtitle">
-Robotics • Learning Systems • Brain-Inspired AI
+  <!-- ── Content ── -->
+  <div class="content">
+
+    <!-- Research -->
+    <section id="research">
+      <h2>Research</h2>
+      <p style="line-height:1.85;font-size:15px;color:#b0c4d8;">
+        I am interested in how intelligent systems build internal representations
+        of space and experience from physical interaction, and how those
+        representations support planning, adaptation, and robust behavior in
+        the real world.
+      </p>
+      <p style="line-height:1.85;font-size:15px;color:#b0c4d8;">
+        My work spans geometric perception for embodied agents, biologically
+        grounded learning dynamics, and decentralized coordination in
+        multi-robot systems. A recurring theme is how structure, whether
+        physical, temporal, or biological, can constrain and guide learning
+        rather than leaving it entirely to data.
+      </p>
+      <p style="line-height:1.85;font-size:15px;color:#b0c4d8;">
+        I am currently drawn to computational neuroscience approaches to
+        spatial intelligence, particularly how place cell and grid cell
+        representations emerge from experience, and how the structure of
+        that experience shapes what a network learns to encode.
+      </p>
+    </section>
+
+    <!-- Publications -->
+    <section id="publications">
+      <h2>Publications</h2>
+      <p style="font-size:13px;color:#7a8fa8;margin-bottom:18px;">
+        Click any paper to expand abstract and key contributions.
+      </p>
+
+      <!-- Paper 1 -->
+      <div class="paper-card" onclick="togglePaper(this)">
+        <div class="paper-header">
+          <div class="paper-title-block">
+            <div class="paper-title">NS-DART: Bridging Spatiotemporal Graph Networks and Physics-Informed Reasoning for Explainable Robotic Diagnostics</div>
+            <div class="paper-venue">Under Review — IEEE Robotics and Automation Letters (RA-L)</div>
+          </div>
+          <div class="paper-links" onclick="event.stopPropagation()">
+            <a href="https://github.com/Janhavi-118">Code</a>
+          </div>
+          <button class="expand-btn">&#8964;</button>
+        </div>
+        <div class="paper-body">
+          <p class="paper-abstract">
+            NS-DART is a scalable 4-tier neuro-symbolic framework for explainable diagnostics
+            on warehouse AMR fleets. It bridges spatiotemporal graph-based anomaly detection
+            with deterministic physics-informed reasoning, governed by a declarative YAML
+            ontology. A novel context-key calibration mechanism conditions anomaly thresholds
+            on the robot's behavioral state, reducing false alarm rates by 48% compared to
+            global threshold baselines. A symbolic physics engine maps detected anomalies to
+            causal fault trees, achieving a 97.7% explanation rate, and LLM generation is
+            strictly bounded to verified fault trees to prevent hallucination.
+          </p>
+          <ul class="paper-contributions">
+            <li>Context-key calibration: per-context anomaly thresholds across 7 operational states, with 9x variation in threshold values</li>
+            <li>Epistemic separation principle: PARTIAL_DIAGNOSTIC output when anomaly cannot be physically explained</li>
+            <li>0.982 precision and 97.7% explanation rate on real warehouse AMR telemetry</li>
+            <li>35.5% more faults detected than MTAD-GAT neural baseline</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Paper 2 -->
+      <div class="paper-card" onclick="togglePaper(this)">
+        <div class="paper-header">
+          <div class="paper-title-block">
+            <div class="paper-title">SGSPose: Neuromorphic-Geometric 6D Pose Estimation Through Spiking Graph Neural Networks and SE(3)-Equivariant Learning</div>
+            <div class="paper-venue">IEEE Access</div>
+          </div>
+          <div class="paper-links" onclick="event.stopPropagation()">
+            <a href="https://ieeexplore.ieee.org/document/11338761">Paper</a>
+            <a href="https://github.com/Janhavi-118/SGSPose">Code</a>
+          </div>
+          <button class="expand-btn">&#8964;</button>
+        </div>
+        <div class="paper-body">
+          <p class="paper-abstract">
+            SGSPose integrates spiking neural networks for temporal spike encoding with
+            SE(3)-equivariant graph neural networks for geometrically consistent 6D pose
+            regression. The pipeline converts RGB images into temporal spiking features,
+            followed by SE(3)-equivariant graph message passing with orthogonalized
+            rotation outputs, achieving physically consistent pose estimation that respects
+            the geometry of 3D space by construction.
+          </p>
+          <ul class="paper-contributions">
+            <li>Novel integration of neuromorphic spike encoding with SE(3)-equivariant geometric reasoning</li>
+            <li>Over 90% improvement in median translation error on 7Scenes compared to PoseNet</li>
+            <li>Translation errors as low as 0.019m; ADD-S accuracy up to 96.2%</li>
+            <li>Composite loss combining Smooth L1, geodesic rotation distance, and ADD-S metric</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Paper 3 -->
+      <div class="paper-card" onclick="togglePaper(this)">
+        <div class="paper-header">
+          <div class="paper-title-block">
+            <div class="paper-title">SwarmFormer: Transformer-Based Multi-Robot Formation Control With Risk-Aware Fusion</div>
+            <div class="paper-venue">RCAE 2025</div>
+          </div>
+          <div class="paper-links" onclick="event.stopPropagation()">
+            <a href="https://drive.google.com/file/d/1X7AYw-P2fILt9LUmRwFreE6ufEVuHRJ3/view?usp=sharing">Paper</a>
+            <a href="https://github.com/Janhavi-118/SwarmFormer">Code</a>
+            <a href="https://github.com/Janhavi-118/SwarmDataset">Dataset</a>
+          </div>
+          <button class="expand-btn">&#8964;</button>
+        </div>
+        <div class="paper-body">
+          <p class="paper-abstract">
+            SwarmFormer is a goal-conditioned transformer policy for decentralized
+            multi-robot formation control. It fuses odometry, CVaR-augmented LiDAR,
+            explicit formation goals, and decentralized gossip communication via
+            hierarchical cross-modal attention, with Gaussian Mixture Model outputs
+            for uncertainty-aware control. Trained and evaluated on a comprehensive
+            Gazebo-ROS2 dataset covering 5 formation types and 4 swarm sizes.
+          </p>
+          <ul class="paper-contributions">
+            <li>Hierarchical cross-modal attention over heterogeneous sensor modalities</li>
+            <li>CVaR-augmented LiDAR for risk-aware obstacle fusion</li>
+            <li>Test MAE of 0.0767, improving 21% over MLP and 28% over RNN baselines</li>
+            <li>NLL of -3.67, enabling uncertainty-aware decentralized control</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Paper 4 -->
+      <div class="paper-card" onclick="togglePaper(this)">
+        <div class="paper-header">
+          <div class="paper-title-block">
+            <div class="paper-title">Dopamine in the Mitigation of Catastrophic Forgetting in Reinforcement Learning</div>
+            <div class="paper-venue">MLISE 2025</div>
+          </div>
+          <div class="paper-links" onclick="event.stopPropagation()">
+            <a href="https://ieeexplore.ieee.org/abstract/document/11100173">Paper</a>
+            <a href="https://github.com/Janhavi-118/DopamineReinforcementLearning">Code</a>
+          </div>
+          <button class="expand-btn">&#8964;</button>
+        </div>
+        <div class="paper-body">
+          <p class="paper-abstract">
+            This work develops dopamine-inspired reinforcement learning methods that
+            integrate Elastic Weight Consolidation, neuromodulated temporal difference
+            updates, and Hebbian learning to stabilize DQNs across sequential Atari
+            tasks. The key contribution is dopamine-gated synaptic consolidation, which
+            achieves near-zero catastrophic forgetting while reinforcing prior knowledge
+            during new task learning.
+          </p>
+          <ul class="paper-contributions">
+            <li>Dopamine-gated synaptic consolidation: Backward Transfer = 0, near-zero forgetting</li>
+            <li>Greater than 99% reduction in weight changes compared to baseline DQN</li>
+            <li>Positive backward transfer (+10) with neuromodulated learning rate</li>
+            <li>Validated across sequential Atari task benchmarks</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Paper 5 -->
+      <div class="paper-card" onclick="togglePaper(this)">
+        <div class="paper-header">
+          <div class="paper-title-block">
+            <div class="paper-title">Autonomous Exploration of Unknown Indoor Environments Using Multi-UAV Systems</div>
+            <div class="paper-venue">ICCCR 2025</div>
+          </div>
+          <div class="paper-links" onclick="event.stopPropagation()">
+            <a href="https://ieeexplore.ieee.org/abstract/document/11072559">Paper</a>
+            <a href="https://github.com/Janhavi-118/PygameDroneSwarm">Pygame</a>
+            <a href="https://github.com/Janhavi-118/DroneSwarmNavigation">Gazebo</a>
+          </div>
+          <button class="expand-btn">&#8964;</button>
+        </div>
+        <div class="paper-body">
+          <p class="paper-abstract">
+            A coordinated multi-UAV swarm system for autonomous indoor exploration
+            using a master-slave architecture with dynamic task allocation and
+            safety-aware coordination via ROS2. The system integrates PX4 autopilot,
+            Gazebo simulator, and ROS2 middleware for GPS-denied navigation using
+            LiDAR-based SLAM and Visual-Inertial Odometry.
+          </p>
+          <ul class="paper-contributions">
+            <li>Master-slave architecture with dynamic floor assignment and recursive frontier exploration</li>
+            <li>Battery-aware autonomous return and adaptive swarm formation</li>
+            <li>GPS-denied navigation via LiDAR SLAM and Visual-Inertial Odometry fusion</li>
+            <li>High-fidelity validation in Gazebo-ROS2 with PX4 autopilot integration</li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <h2>Selected Projects</h2>
+
+      <div class="card">
+        <b>Quadruped Gait Imitation Learning with Sensorimotor Feedback</b><br>
+        Biologically inspired CPG controller with behavioral cloning and deep forward predictive
+        model for real-time gait anomaly correction. Achieved 399% improvement in forward
+        progress recovery under perturbations.<br>
+        <a href="https://github.com/Janhavi-118/NeuroQuadruped">GitHub</a>
+      </div>
+
+      <div class="card">
+        <b>Multi-Agent Reinforcement Learning for Swarm Pursuit Coordination</b><br>
+        IQL, QMIX, and MADDPG implemented in a custom Pac-Man pursuit environment.
+        QMIX achieved 100% win rate; MADDPG delivered highest average rewards across 500 episodes.<br>
+        <a href="https://github.com/Janhavi-118/PacMan_MARL">GitHub</a>
+      </div>
+
+      <div class="card">
+        <b>Multi-TurtleBot Coordination in Gazebo</b><br>
+        Collaborative target search using Bug Algorithm wall-following and OpenCV-based
+        real-time target detection with ROS2 coordination.<br>
+        <a href="https://github.com/Janhavi-118/TurtleBot3_Swarm">GitHub</a>
+      </div>
+
+      <div class="card">
+        <b>Perception for Autonomous Underwater Vehicle</b><br>
+        ArUco-based pose estimation and navigation stack in ROS for GPS-denied
+        underwater localization. Developed for TAC Challenge 2024 (Global Runners-Up).<br>
+        <a href="https://github.com/Dreadnought-Robotics/Project-Mira">GitHub</a>
+      </div>
+
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+      <h2>Experience</h2>
+
+      <div class="card">
+        <b>Robotics Intern — Accio Robotics</b> &nbsp;<span style="color:#7a8fa8;font-size:12px;">May 2025 – Jul 2025</span><br>
+        Developed industrial bin-picking pipeline using YOLOv8 few-shot instance segmentation
+        on RGB-D data. Built SAM2-integrated annotation tool and projection homography
+        pipelines with RealSense sensors.
+      </div>
+
+      <div class="card">
+        <b>Robotics Intern — Clearspot.ai</b> &nbsp;<span style="color:#7a8fa8;font-size:12px;">Aug 2024 – Dec 2024</span><br>
+        Built UAV simulation environments using PX4 and ROS2. Implemented computer vision
+        pipelines with OpenCV for real-time drone perception and georeferenced mapping.
+      </div>
+
+      <div class="card">
+        <b>Robotics Intern — K12 Techno Services</b> &nbsp;<span style="color:#7a8fa8;font-size:12px;">May 2024 – Jul 2024</span><br>
+        Built PID-controlled mobile robot for precise navigation and developed Arduino-based
+        embedded systems with Bluetooth and sensor integration.
+      </div>
+
+    </section>
+
+  </div>
 </div>
 
-<p>
-janhavic [dot] 2604 [at] gmail [dot] com
-</p>
-
-<div class="links">
-<a href="https://github.com/Janhavi-118">GitHub</a>
-<a href="https://scholar.google.com/citations?user=LmbheEcAAAAJ">Google Scholar</a>
-<a href="assets/JanhaviC_CV.pdf" target="_blank">CV</a>
-</div>
-
-</div>
-
-<div class="content">
-
-<section id="research">
-
-<h2>Research</h2>
-
-<p>
-My research explores how mechanisms inspired by human brain learning can inform adaptive robotic systems.
-I am particularly interested in reinforcement learning, neuromorphic perception, and multi-agent robotics,
-with a focus on learning dynamics that enable stability and continual adaptation in embodied systems.
-</p>
-
-<p>
-Across work in neuromodulated reinforcement learning, geometric perception, and decentralized swarm control,
-I explore how robots can coordinate under uncertainty while retaining useful behavior over long horizons.
-</p>
-
-</section>
-
-<section id="publications">
-
-<h2>Publications</h2>
-
-<div class="card">
-<b>Dopamine in the Mitigation of Catastrophic Forgetting in Reinforcement Learning</b><br>
-MLISE 2025<br>
-<a href="https://ieeexplore.ieee.org/abstract/document/11100173">Paper</a> |
-<a href="https://github.com/Janhavi-118/DopamineReinforcementLearning">Code</a>
-</div>
-
-<div class="card">
-<b>SwarmFormer: Transformer-Based Multi-Robot Formation Control With Risk-Aware Fusion</b><br>
-RCAE 2025<br>
-<a href="https://drive.google.com/file/d/1X7AYw-P2fILt9LUmRwFreE6ufEVuHRJ3/view?usp=sharing">Paper</a> |
-<a href="https://github.com/Janhavi-118/SwarmFormer">Code</a> |
-<a href="https://github.com/Janhavi-118/SwarmDataset">Dataset</a>
-</div>
-
-<div class="card">
-<b>SGSPose: Neuromorphic-Geometric 6D Pose Estimation Through Spiking Graph Neural Networks and SE(3)-Equivariant Learning</b><br>
-IEEE Access<br>
-<a href="https://ieeexplore.ieee.org/document/11338761">Paper</a> |
-<a href="https://github.com/Janhavi-118/SGSPose">Code</a>
-</div>
-
-<div class="card">
-<b>Autonomous Exploration of Unknown Indoor Environments Using Multi-UAV Systems</b><br>
-ICCCR 2025<br>
-<a href="https://ieeexplore.ieee.org/abstract/document/11072559">Paper</a> |
-<a href="https://github.com/Janhavi-118/PygameDroneSwarm">Pygame Simulation</a> |
-<a href="https://github.com/Janhavi-118/DroneSwarmNavigation">Gazebo Simulation</a>
-</div>
-
-</section>
-
-<section id="projects">
-
-<h2>Selected Projects</h2>
-
-<div class="card">
-<b>Quadruped Gait Imitation Learning with Sensorimotor Feedback</b><br>
-<a href="https://github.com/Janhavi-118/NeuroQuadruped">GitHub Repository</a>
-</div>
-
-<div class="card">
-<b>Multi-Agent Reinforcement Learning for Swarm Pursuit Coordination</b><br>
-<a href="https://github.com/Janhavi-118/PacMan_MARL">GitHub Repository</a>
-</div>
-
-<div class="card">
-<b>Multi-TurtleBot Coordination in Gazebo</b><br>
-<a href="https://github.com/Janhavi-118/TurtleBot3_Swarm">GitHub Repository</a>
-</div>
-
-<div class="card">
-<b>Perception for Autonomous Underwater Vehicle</b><br>
-<a href="https://github.com/Dreadnought-Robotics/Project-Mira">GitHub Repository</a>
-</div>
-
-</section>
-
-<section id="experience">
-
-<h2>Experience</h2>
-
-<div class="card">
-<b>Robotics Intern : Accio Robotics</b><br>
-Developed perception pipelines for robotic bin-picking systems using YOLOv8 and RGB-D sensing.
-</div>
-
-<div class="card">
-<b>Robotics Intern : Clearspot.ai</b><br>
-Built UAV simulation environments using PX4 and ROS2 for perception-driven navigation.
-</div>
-
-</section>
-
-</div>
-
-</div>
+<script>
+function togglePaper(card) {
+  card.classList.toggle('open');
+}
+</script>
 
 </body>
 </html>
