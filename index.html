@@ -59,8 +59,8 @@
 
   /* ---------- thumbnail placeholder system ---------- */
   .thumb-slot{
-    border:1px dashed var(--line);
-    background:repeating-linear-gradient(135deg, rgba(44,58,94,0.06) 0 6px, transparent 6px 12px);
+    border:1px solid var(--line);
+    background:var(--bg-deep);
     display:flex;align-items:center;justify-content:center;
     flex-shrink:0;overflow:hidden;
   }
@@ -316,7 +316,7 @@
       </div>
       <div class="hero-side">
         <div class="polaroid hero-photo">
-          <div class="thumb-slot"><span class="thumb-slot-label">assets/<br>profile.jpg</span></div>
+          <div class="thumb-slot"><img src="assets/profile.jpg" alt="Janhavi Chaurasia"></div>
         </div>
       </div>
     </div>
@@ -417,7 +417,7 @@
     </div>
 
     <div class="pub">
-      <div class="thumb-slot pub-thumb"><span class="thumb-slot-label">assets/<br>pub-sgspose.png</span></div>
+      <div class="thumb-slot pub-thumb"><img src="assets/pub-sgspose.jpg" alt="SGSPose figure"></div>
       <div>
         <p class="pub-title">SGSPose: Neuromorphic-Geometric 6D Pose Estimation Through Spiking Graph Neural Networks and SE(3)-Equivariant Learning</p>
         <p class="pub-meta mono">2026 · IEEE Access</p>
@@ -426,7 +426,7 @@
     </div>
 
     <div class="pub">
-      <div class="thumb-slot pub-thumb"><span class="thumb-slot-label">assets/<br>pub-swarmformer.png</span></div>
+      <div class="thumb-slot pub-thumb"><img src="assets/pub-swarmformer.jpg" alt="SwarmFormer figure"></div>
       <div>
         <p class="pub-title">SwarmFormer: Transformer-Based Multi-Robot Formation Control With Risk-Aware Fusion</p>
         <p class="pub-meta mono">2025 · RCAE 2025</p>
@@ -435,7 +435,7 @@
     </div>
 
     <div class="pub">
-      <div class="thumb-slot pub-thumb"><span class="thumb-slot-label">assets/<br>pub-dopamine.png</span></div>
+      <div class="thumb-slot pub-thumb"><img src="assets/pub-dopamine.jpg" alt="Dopamine reinforcement learning figure"></div>
       <div>
         <p class="pub-title">Dopamine in the Mitigation of Catastrophic Forgetting in Reinforcement Learning</p>
         <p class="pub-meta mono">2025 · MLISE 2025</p>
@@ -444,7 +444,7 @@
     </div>
 
     <div class="pub">
-      <div class="thumb-slot pub-thumb"><span class="thumb-slot-label">assets/<br>pub-uav-exploration.png</span></div>
+      <div class="thumb-slot pub-thumb"><img src="assets/pub-uav-exploration.jpg" alt="Multi-UAV exploration figure"></div>
       <div>
         <p class="pub-title">Autonomous Exploration of Unknown Indoor Environments Using Multi-UAV Systems</p>
         <p class="pub-meta mono">2025 · ICCCR 2025</p>
@@ -464,7 +464,8 @@
     </div>
     <ul class="news-list">
       <li><span class="news-date mono">2026.01</span><span class="news-text">SGSPose accepted to <em>IEEE Access</em>.</span></li>
-      <li><span class="news-date mono">2025.09</span><span class="news-text">SwarmFormer accepted to RCAE 2025.</span></li>
+      <li><span class="news-date mono">2026</span><span class="news-text">Began drafting NS-DART, a neuro-symbolic diagnostic framework for robotics (manuscript in preparation).</span></li>
+      <li><span class="news-date mono">2025.09</span><span class="news-text">Presented SwarmFormer at RCAE 2025.</span></li>
       <li><span class="news-date mono">2025.04</span><span class="news-text">"Autonomous Exploration of Unknown Indoor Environments Using Multi-UAV Systems" accepted to ICCCR 2025.</span></li>
       <li><span class="news-date mono">2025.04</span><span class="news-text">"Dopamine in the Mitigation of Catastrophic Forgetting in Reinforcement Learning" accepted to MLISE 2025.</span></li>
     </ul>
@@ -485,7 +486,7 @@
       <div class="pillar-head"><span class="pillar-name">Explainable Physical AI</span><span class="pillar-tag mono">→ Δ03</span></div>
       <div class="featured">
         <div class="featured-top">
-          <div class="thumb-slot featured-thumb"><span class="thumb-slot-label">assets/<br>proj-nsdart.png</span></div>
+          <div class="thumb-slot featured-thumb"><img src="assets/proj-nsdart.jpg" alt="NS-DART diagnostic pipeline"></div>
           <div class="featured-top-text">
             <p class="featured-title">NS-DART: Bridging Spatiotemporal Graph Networks and Physics-Informed Reasoning for Explainable Robotic Diagnostics</p>
             <span class="badge-wip">Manuscript in prep</span>
@@ -507,7 +508,7 @@
       <div class="pillar-head"><span class="pillar-name">Representation Learning</span><span class="pillar-tag mono">→ Δ02</span></div>
       <ul class="proj-list">
         <li>
-          <div class="proj-row"><div class="thumb-slot proj-thumb"><span class="thumb-slot-label">proj-quadruped.png</span></div><span class="proj-name">Quadruped Gait Imitation Learning with Sensorimotor Feedback</span><a class="proj-link" href="https://github.com/JanhaviChaurasia/NeuroQuadruped">GitHub ↗</a></div>
+          <div class="proj-row"><div class="thumb-slot proj-thumb"><img src="assets/proj-quadruped.jpg" alt="Quadruped gait imitation project"></div><span class="proj-name">Quadruped Gait Imitation Learning with Sensorimotor Feedback</span><a class="proj-link" href="https://github.com/JanhaviChaurasia/NeuroQuadruped">GitHub ↗</a></div>
           <p class="proj-desc">Learned sensorimotor policies that imitate recorded gait patterns, transferring them into stable, feedback-adaptive locomotion on a quadruped.</p>
         </li>
       </ul>
@@ -517,15 +518,15 @@
       <div class="pillar-head"><span class="pillar-name">Embodied Robotics</span><span class="pillar-tag mono">→ Δ01</span></div>
       <ul class="proj-list">
         <li>
-          <div class="proj-row"><div class="thumb-slot proj-thumb"><span class="thumb-slot-label">proj-pacman-marl.png</span></div><span class="proj-name">Multi-Agent RL for Swarm Pursuit Coordination</span><a class="proj-link" href="https://github.com/JanhaviChaurasia/PacMan_MARL">GitHub ↗</a></div>
+          <div class="proj-row"><div class="thumb-slot proj-thumb"><img src="assets/proj-pacman-marl.jpg" alt="Multi-agent RL swarm pursuit project"></div><span class="proj-name">Multi-Agent RL for Swarm Pursuit Coordination</span><a class="proj-link" href="https://github.com/JanhaviChaurasia/PacMan_MARL">GitHub ↗</a></div>
           <p class="proj-desc">Trained cooperative and adversarial multi-agent policies for pursuit coordination, comparing centralized against decentralized strategies.</p>
         </li>
         <li>
-          <div class="proj-row"><div class="thumb-slot proj-thumb"><span class="thumb-slot-label">proj-turtlebot.png</span></div><span class="proj-name">Multi-TurtleBot Coordination in Gazebo</span><a class="proj-link" href="https://github.com/JanhaviChaurasia/TurtleBot3_Swarm">GitHub ↗</a></div>
+          <div class="proj-row"><div class="thumb-slot proj-thumb"><img src="assets/proj-turtlebot.jpg" alt="Multi-TurtleBot coordination project"></div><span class="proj-name">Multi-TurtleBot Coordination in Gazebo</span><a class="proj-link" href="https://github.com/JanhaviChaurasia/TurtleBot3_Swarm">GitHub ↗</a></div>
           <p class="proj-desc">Coordinated formation control and obstacle-aware navigation across multiple TurtleBots in a shared simulated environment.</p>
         </li>
         <li>
-          <div class="proj-row"><div class="thumb-slot proj-thumb"><span class="thumb-slot-label">proj-auv-mira.png</span></div><span class="proj-name">Perception for Autonomous Underwater Vehicle</span><a class="proj-link" href="https://github.com/Dreadnought-Robotics/Project-Mira">GitHub ↗</a></div>
+          <div class="proj-row"><div class="thumb-slot proj-thumb"><img src="assets/proj-auv-mira.jpg" alt="Autonomous underwater vehicle perception project"></div><span class="proj-name">Perception for Autonomous Underwater Vehicle</span><a class="proj-link" href="https://github.com/Dreadnought-Robotics/Project-Mira">GitHub ↗</a></div>
           <p class="proj-desc">Built a perception stack for a competition AUV, handling low-visibility, high-noise underwater sensing conditions.</p>
         </li>
       </ul>
